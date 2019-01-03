@@ -1,0 +1,1 @@
+curl -is http://localhost:8080/otn/leftTicket/queryZ?leftTicketDTO.train_date=2019-01-30&leftTicketDTO.from_station=DMQ&leftTicketDTO.to_station=YYQ&purpose_codes=ADULT
