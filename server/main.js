@@ -1,13 +1,8 @@
 const restify = require('restify');
 const fs = require('fs');
 const path = require('path');
-const queryZ = require('./mock/data/queryZ.json');
 
-function respondJson(req, res, next) {
-  // res.send('hello ' + req.params.name);
-  res.json(queryZ);
-  next();
-}
+const makeRoutes = require('./routes');
 
 const httpsOpts = {
   key: fs.readFileSync(path.join(__dirname, 'ssl/localhost.key')),
@@ -17,7 +12,7 @@ const httpsOpts = {
 };
 
 const httpsServer = restify.createServer(httpsOpts);
-httpsServer.get('/*', respondJson);
+makeRoutes(httpsServer);
 
 const httpsPort = process.env.PORT || 443;
 
